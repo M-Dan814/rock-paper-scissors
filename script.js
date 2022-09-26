@@ -1,26 +1,33 @@
-choices = [/rock/i, /scissors/i, /paper/i];
+const choices = ["rock", "scissors", "paper"];
 function getComputerChoice() {
-  comp_choice = Math.floor(Math.random() * choices.length);
+  comp_choice = choices[Math.floor(Math.random() * choices.length)];
   return comp_choice;
 }
 
 function playRound(computerChoice, playerChoice) {
   computerChoice = getComputerChoice();
-  playerChoice = prompt("Enter your choice: ");
-  if (choices.indexOf(playerChoice) < 0) {
-    playerChoice = prompt("Invalid choice. Enter again: ");
-  }
+  playerChoice = prompt("Enter your choice: ").toLowerCase();
+  console.log(playerChoice);
   if (
-    (playerChoice == /rock/i && computerChoice == /scissors/i) ||
-    (playerChoice == /paper/i && computerChoice == /rock/i) ||
-    (playerChoice == /scissors/i && computerChoice == /paper/i)
+    ((playerChoice == "rock") && (computerChoice == "scissors")) ||
+    ((playerChoice == "paper") && (computerChoice == "rock")) ||
+    ((playerChoice == "scissors") && (computerChoice == "paper"))
   ) {
     console.log(`You win! ${playerChoice} beats ${computerChoice}`);
   } else if (
-    (playerChoice == /paper/i && computerChoice == /scissors/i) ||
-    (playerChoice == /scissors/i && computerChoice == /rock/i) ||
-    (playerChoice == /rock/i && computerChoice == /paper/i)
+    ((playerChoice == "paper") && (computerChoice == "scissors")) ||
+    ((playerChoice == "scissors") && (computerChoice == "rock")) ||
+    ((playerChoice == "rock") && (computerChoice == "paper"))
   ) {
     console.log(`You lose! ${computerChoice} beats ${playerChoice}`);
   }
 }
+
+function play() {
+  for (let i = 0; i <= 5; i++) {
+    playRound();
+  }
+}
+
+console.log(choices);
+play();
