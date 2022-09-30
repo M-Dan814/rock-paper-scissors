@@ -1,0 +1,46 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
+    padding: 30px;
+    font-size: 28px;
+}
+
+.btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#red {
+    background-color: rgb(236, 73, 106);
+}
+
+#blue {
+    background-color: rgb(59, 56, 240);
+    color: white;
+}
+
+#yellow {
+    background-color: rgb(228, 228, 54);
+}
+
+.result {
+    margin-top: 80px;
+    margin-left: 150px;
+    width: 75vw;
+    background-color: rgb(226, 226, 226);
+    height: 200px;
+}
