@@ -4,8 +4,7 @@ html, body {
 }
 
 h1 {
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto
 }
 
 .container {
