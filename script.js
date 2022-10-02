@@ -10,22 +10,18 @@ function getComputerChoice() {
 const rock = document.querySelector("#red");
 const paper = document.querySelector("#blue");
 const scissors = document.querySelector("#yellow");
-
-function getPlayerChoice(choice = "rock") {
-  console.log(choice);
-  return choice;
-}
+const result = document.querySelector(".result");
 
 rock.addEventListener("click", () => {
-  playRound("rock");
+  game("rock");
 });
 
 paper.addEventListener("click", () => {
-  playRound("paper");
+  game("paper");
 });
 
 scissors.addEventListener("click", () => {
-  playRound("scissors");
+  game("scissors");
 });
 
 function playRound(playerSelection, computerSelection) {
@@ -37,13 +33,18 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection == "scissors" && computerSelection == "paper")
   ) {
     playerScore++;
-    return `You win! ${playerSelection} beats ${computerSelection}`;
+    result.innerHTML = `You win! ${playerSelection} beats ${computerSelection}`;
+    result.style["color"] = "green";
+    result.style["font-size"] = "1.8rem";
   } else if (
     (playerSelection == "paper" && computerSelection == "scissors") ||
     (playerSelection == "scissors" && computerSelection == "rock") ||
     (playerSelection == "rock" && computerSelection == "paper")
   ) {
     compScore++;
+    result.innerHTML = `You lose! ${computerSelection} beats ${playerSelection}`;
+    result.style["color"] = "red";
+    result.style["font-size"] = "1.8rem";
     return `You lose! ${computerSelection} beats ${playerSelection}`;
   } else if (playerSelection === computerSelection) {
     return "It's a tie! Play again!";
@@ -53,6 +54,20 @@ function playRound(playerSelection, computerSelection) {
 function game(playerChoice) {
   let player = playerChoice;
   let computer = getComputerChoice();
+
+  playRound(player, computer);
+
+  if (playerScore == 5) {
+    result.innerHTML = "Congratulations! You won the game!";
+    result.style["color"] = "green";
+    result.style["font-size"] = "1.8rem";
+    result.innerHTML = "";
+  } else if (compScore == 5) {
+    result.innerHTML = "Oh No! You lost the game!";
+    result.style["color"] = "red";
+    result.style["font-size"] = "1.8rem";
+    result.innerHTML = "";
+  }
 }
 
 console.log(playRound());
