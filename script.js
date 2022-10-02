@@ -4,23 +4,27 @@ function getComputerChoice() {
   return comp_choice;
 }
 
+const rock = document.querySelector("#red");
+const paper = document.querySelector("#blue");
+const scissors = document.querySelector("#yellow");
+
 function playRound(computerChoice, playerChoice) {
   computerChoice = getComputerChoice();
   playerChoice = prompt("Enter your choice: ").toLowerCase();
   if (
-    ((playerChoice == "rock") && (computerChoice == "scissors")) ||
-    ((playerChoice == "paper") && (computerChoice == "rock")) ||
-    ((playerChoice == "scissors") && (computerChoice == "paper"))
+    (playerChoice == "rock" && computerChoice == "scissors") ||
+    (playerChoice == "paper" && computerChoice == "rock") ||
+    (playerChoice == "scissors" && computerChoice == "paper")
   ) {
-    return (`You win! ${playerChoice} beats ${computerChoice}`);
+    return `You win! ${playerChoice} beats ${computerChoice}`;
   } else if (
-    ((playerChoice == "paper") && (computerChoice == "scissors")) ||
-    ((playerChoice == "scissors") && (computerChoice == "rock")) ||
-    ((playerChoice == "rock") && (computerChoice == "paper"))
+    (playerChoice == "paper" && computerChoice == "scissors") ||
+    (playerChoice == "scissors" && computerChoice == "rock") ||
+    (playerChoice == "rock" && computerChoice == "paper")
   ) {
-    return (`You lose! ${computerChoice} beats ${playerChoice}`);
+    return `You lose! ${computerChoice} beats ${playerChoice}`;
   }
-  return "Invalid choice"
+  return "Invalid choice";
 }
 
 function play() {
