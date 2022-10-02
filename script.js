@@ -1,5 +1,8 @@
-const choices = ["rock", "scissors", "paper"];
+let playerScore = 0;
+let compScore = 0;
+
 function getComputerChoice() {
+  const choices = ["rock", "scissors", "paper"];
   comp_choice = choices[Math.floor(Math.random() * choices.length)];
   return comp_choice;
 }
@@ -8,29 +11,48 @@ const rock = document.querySelector("#red");
 const paper = document.querySelector("#blue");
 const scissors = document.querySelector("#yellow");
 
-function playRound(computerChoice, playerChoice) {
-  computerChoice = getComputerChoice();
-  playerChoice = prompt("Enter your choice: ").toLowerCase();
+function getPlayerChoice(choice = "rock") {
+  console.log(choice);
+  return choice;
+}
+
+rock.addEventListener("click", () => {
+  playRound("rock");
+});
+
+paper.addEventListener("click", () => {
+  playRound("paper");
+});
+
+scissors.addEventListener("click", () => {
+  playRound("scissors");
+});
+
+function playRound(playerSelection, computerSelection) {
+  console.log(`You selected ${playerSelection}`);
+  console.log(`Computer selected ${computerSelection}`);
   if (
-    (playerChoice == "rock" && computerChoice == "scissors") ||
-    (playerChoice == "paper" && computerChoice == "rock") ||
-    (playerChoice == "scissors" && computerChoice == "paper")
+    (playerSelection == "rock" && computerSelection == "scissors") ||
+    (playerSelection == "paper" && computerSelection == "rock") ||
+    (playerSelection == "scissors" && computerSelection == "paper")
   ) {
-    return `You win! ${playerChoice} beats ${computerChoice}`;
+    playerScore++;
+    return `You win! ${playerSelection} beats ${computerSelection}`;
   } else if (
-    (playerChoice == "paper" && computerChoice == "scissors") ||
-    (playerChoice == "scissors" && computerChoice == "rock") ||
-    (playerChoice == "rock" && computerChoice == "paper")
+    (playerSelection == "paper" && computerSelection == "scissors") ||
+    (playerSelection == "scissors" && computerSelection == "rock") ||
+    (playerSelection == "rock" && computerSelection == "paper")
   ) {
-    return `You lose! ${computerChoice} beats ${playerChoice}`;
-  }
-  return "Invalid choice";
-}
-
-function play() {
-  for (let i = 0; i < 5; i++) {
-    console.log(playRound());
+    compScore++;
+    return `You lose! ${computerSelection} beats ${playerSelection}`;
+  } else if (playerSelection === computerSelection) {
+    return "It's a tie! Play again!";
   }
 }
 
-play();
+function game(playerChoice) {
+  let player = playerChoice;
+  let computer = getComputerChoice();
+}
+
+console.log(playRound());
